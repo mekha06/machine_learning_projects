@@ -2,7 +2,7 @@ import pandas as pd
 
 def load_and_clean_data(path):
 
-    df = pd.read_csv("online_retail.csv")
+    df = pd.read_csv(path, encoding="ISO-8859-1")
     df = df.dropna(subset=['CustomerID'])
     df['CustomerID'] = df['CustomerID'].astype(str)
 
@@ -11,5 +11,5 @@ def load_and_clean_data(path):
     df = df[df['UnitPrice'] > 0]
 
     df['TotalPrice'] = df['Quantity'] * df['UnitPrice']
-
-    return df
+    
+    return df.reset_index(drop=True)
