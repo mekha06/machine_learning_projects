@@ -10,7 +10,7 @@ from src.recommender import build_recommender, recommend
 # LOAD DATA
 # --------------------------------------------------
 
-df = load_and_clean_data("data/Online Retail.xlsx")
+df = load_and_clean_data("online_retail.csv")
 
 rfm, sil_score, db_score, ch_score = build_rfm(df)
 
@@ -22,7 +22,7 @@ user_item, sim_df = build_recommender(df)
 
 st.set_page_config(layout="wide")
 
-st.title("🧠 Customer Segmentation & Recommendation System")
+st.title("Customer Segmentation & Recommendation System")
 
 # Sidebar
 customer = st.sidebar.selectbox("Select Customer ID", rfm['CustomerID'])
